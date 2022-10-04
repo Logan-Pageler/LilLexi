@@ -1,13 +1,13 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Launch LilLexi",
-            "request": "launch",
-            "mainClass": "LilLexi",
-            "projectName": "LilLexi_4f6e98f6",
-            "vmArgs": "-XstartOnFirstThread"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch LilLexi",
+      "request": "launch",
+      "mainClass": "LilLexi",
+      "projectName": "LilLexi_c61e051b",
+      "vmArgs": "-XstartOnFirstThread"
+    }
+  ]
 }
