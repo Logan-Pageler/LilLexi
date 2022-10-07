@@ -1,20 +1,26 @@
-package Glyphs;
+package glyphs;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Rectangle;
 
 public abstract class Glyph {
 
-    private Rectangle bounds;
+    protected Rectangle bounds;
 
     Glyph parent;
-    private List<Glyph> children;
+    protected List<Glyph> children;
 
-    public Glyph() {
+    protected Glyph() {
         children = new ArrayList<Glyph>();
+        bounds = new Rectangle(0, 0, 0, 0);
+    }
+
+    protected Glyph(int x, int y, int width, int height) {
+        children = new ArrayList<Glyph>();
+        bounds = new Rectangle(x, y, width, height);
     }
 
     /**
@@ -72,6 +78,76 @@ public abstract class Glyph {
     public void remove(int index) {
         children.remove(index);
     }
+
+    /**
+     * @return Rectangle bounds of the Glyph
+     */
+    public Rectangle getBounds() {
+        return this.bounds;
+    }
+    
+    /**
+     * Sets the Rectangle bounds of the Glyph
+     * @param bounds Rectangle to set bounds to.
+     */
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
+
+    /**
+     * Sets position of the Glyph
+     * @param x x coordinate to move Glyph to 
+     * @param y y coordinate to move Glyph to 
+     */
+    public void setPosition(int x, int y) { 
+        this.bounds.setLocation(x, y);
+    }
+
+    /**
+     * Returns x position of Glyph
+     * @return x coordinate of Glyph
+     */
+    public int getX() {
+      return (int)this.bounds.getX();
+    }
+
+    /**
+     * @return y coordinate of Glyph
+     */
+    public int getY() {
+      return (int)this.bounds.getY();
+    }
+
+    /**
+     * @return width of Glyph
+     */
+    public int getWidth() {
+        return this.bounds.width;
+    }
+
+    /**
+     * @return height of Glyph
+     */
+    public int getHeight() {
+        return this.bounds.height;
+    }
+
+    /**
+     * Changes width of glyph to given value
+     * @param newWidth value to change width to
+     */
+    public void setWidth(int newWidth) {
+        this.bounds.setSize(newWidth, this.getHeight());
+    }
+
+    /**
+     * Changes height of Glyph to given value
+     * @param newHeight value to change height to
+     */
+    public void setHeight(int newHeight) {
+        this.bounds.setSize(this.getWidth(), newHeight);
+    }
+
 
     /**
      * Draws glyph to screen
