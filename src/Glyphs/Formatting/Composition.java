@@ -1,9 +1,9 @@
-package Glyphs.Formatting;
+package glyphs.formatting;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Glyphs.Glyph;
+import glyphs.Glyph;
 
 public abstract class Composition extends Glyph {
 

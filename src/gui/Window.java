@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Slider;
 
-import Glyphs.Glyph;
+import glyphs.Glyph;
 
 public class Window {
 
@@ -68,6 +68,9 @@ public class Window {
             e.gc.setForeground(display.getSystemColor(SWT.COLOR_BLUE));
             Font font = new Font(display, "Courier", 24, SWT.BOLD);
             e.gc.setFont(font);
+
+            // draw page
+            currentDoc.getPage().draw(e.gc);
 
             // // List<Glyph> glyphs = currentDoc.getGlyphs();
             // int column = 0;

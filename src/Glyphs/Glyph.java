@@ -10,7 +10,7 @@ public abstract class Glyph {
 
     protected Rectangle bounds;
 
-    Glyph parent;
+    protected Glyph parent;
     protected List<Glyph> children;
 
     protected Glyph() {
@@ -85,9 +85,10 @@ public abstract class Glyph {
     public Rectangle getBounds() {
         return this.bounds;
     }
-    
+
     /**
      * Sets the Rectangle bounds of the Glyph
+     * 
      * @param bounds Rectangle to set bounds to.
      */
     public void setBounds(Rectangle bounds) {
@@ -96,26 +97,28 @@ public abstract class Glyph {
 
     /**
      * Sets position of the Glyph
-     * @param x x coordinate to move Glyph to 
-     * @param y y coordinate to move Glyph to 
+     * 
+     * @param x x coordinate to move Glyph to
+     * @param y y coordinate to move Glyph to
      */
-    public void setPosition(int x, int y) { 
+    public void setPosition(int x, int y) {
         this.bounds.setLocation(x, y);
     }
 
     /**
      * Returns x position of Glyph
+     * 
      * @return x coordinate of Glyph
      */
     public int getX() {
-      return (int)this.bounds.getX();
+        return (int) this.bounds.getX();
     }
 
     /**
      * @return y coordinate of Glyph
      */
     public int getY() {
-      return (int)this.bounds.getY();
+        return (int) this.bounds.getY();
     }
 
     /**
@@ -134,6 +137,7 @@ public abstract class Glyph {
 
     /**
      * Changes width of glyph to given value
+     * 
      * @param newWidth value to change width to
      */
     public void setWidth(int newWidth) {
@@ -142,12 +146,12 @@ public abstract class Glyph {
 
     /**
      * Changes height of Glyph to given value
+     * 
      * @param newHeight value to change height to
      */
     public void setHeight(int newHeight) {
         this.bounds.setSize(this.getWidth(), newHeight);
     }
-
 
     /**
      * Draws glyph to screen
@@ -155,4 +159,20 @@ public abstract class Glyph {
      * @param gc graphic context to draw to
      */
     public abstract void draw(GC gc);
+
+    /**
+     * gets parent glyph
+     * @return parent of this glyph
+     */
+    public Glyph getParent() {
+        return parent;
+    }
+
+    /**
+     * Sets this glyphs parent
+     * @param parent glyph to set parent to
+     */
+    public void setParent(Glyph parent) {
+        this.parent = parent;
+    }
 }

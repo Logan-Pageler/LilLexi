@@ -4,11 +4,17 @@ import org.eclipse.swt.graphics.GC;
 
 import glyphs.Glyph;
 
-public class Character extends Glyph{
+public class Character extends Glyph {
 
   private char c;
-  public Character(char c, int x,int y) {
-    super(x,y, 10,20);
+
+  public Character(char c) {
+    super(0, 0, 15, 20);
+    this.c = c;
+  }
+
+  public Character(char c, int x, int y) {
+    super(x, y, 10, 20);
     this.c = c;
   }
 

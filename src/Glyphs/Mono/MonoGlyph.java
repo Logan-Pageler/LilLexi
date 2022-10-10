@@ -1,8 +1,8 @@
-package Glyphs.Mono;
+package glyphs.mono;
 
 import java.util.List;
 
-import Glyphs.Glyph;
+import glyphs.Glyph;
 
 public abstract class MonoGlyph extends Glyph {
 
@@ -108,6 +108,8 @@ public abstract class MonoGlyph extends Glyph {
 
     /**
      * Sets this MonoGlyphs imediate child
+     * 
+     * @param child glyph to set child to
      */
     public void setChild(Glyph child) {
         this.child = child;

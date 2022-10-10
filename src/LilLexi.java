@@ -1,3 +1,7 @@
+import gui.Control;
+import gui.Document;
+import gui.Window;
+
 /**
  * Lil Lexi Document Editor
  * 
@@ -5,17 +9,17 @@
 
 public class LilLexi
 {
-	static private LilLexiDoc currentDoc = null;
+	static private Document currentDoc = null;
 
 	public static void main(String args[])
 	{
 		if (currentDoc == null)
-			currentDoc = new LilLexiDoc();
-		LilLexiUI lexiUI = new LilLexiUI();
+			currentDoc = new Document();
+		Window lexiUI = new Window();
 		lexiUI.setCurrentDoc( currentDoc );
 		currentDoc.setUI(lexiUI);
 		
-		LilLexiControl lexiControl = new LilLexiControl( currentDoc );
+		Control lexiControl = new Control( currentDoc );
 		lexiUI.setController( lexiControl );
 		
 		lexiUI.start();

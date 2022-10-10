@@ -6,7 +6,9 @@ package gui;
  */
 import java.util.List;
 
-import Glyphs.Glyph;
+import glyphs.Glyph;
+import glyphs.formatting.Row;
+import glyphs.graphical.Character;
 
 import java.util.ArrayList;
 
@@ -15,13 +17,16 @@ import java.util.ArrayList;
  */
 public class Document {
 	private Window ui;
-	private List<Glyph> glyphs;
+	private Glyph page;
+
+	protected Glyph pointer;
+	protected int index;
 
 	/**
 	 * Ctor
 	 */
 	public Document() {
-		glyphs = new ArrayList<Glyph>();
+		page = new Row(0, 0);
 	}
 
 	/**
@@ -36,13 +41,22 @@ public class Document {
 	 */
 	public void add(char c) {
 		// glyphs.add(new Glyph(c));
+		page.add(
+				page.getChildrenCount(),
+				new Character(c));
+		ui.updateUI();
+	}
+
+	public void add(Glyph g) {
+		pointer.add(index, g);
 		ui.updateUI();
 	}
 
 	/**
 	 * gets
 	 */
-	public List<Glyph> getGlyphs() {
-		return glyphs;
+	public Glyph getPage() {
+		return page;
 	}
+
 }
