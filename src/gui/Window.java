@@ -165,8 +165,10 @@ public class Window {
         insertMenu = new Menu(shell, SWT.DROP_DOWN);
         insertMenuHeader.setMenu(insertMenu);
 
+        // TODO: connect to create glyphs at current document position
         insertImageItem = new MenuItem(insertMenu, SWT.PUSH);
-        insertImageItem.setText("Image");
+        insertImageItem.setText("Image"); // NOTE: to add an image, need to create Image object 
+                          // using display and filepath, then give as param to Image glyph constructor
         insertRectItem = new MenuItem(insertMenu, SWT.PUSH);
         insertRectItem.setText("Rectangle");
 
