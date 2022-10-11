@@ -1,5 +1,7 @@
 package compositors;
 
+import glyphs.formatting.Composition;
+
 public abstract class Compositor {
   /**
    * 

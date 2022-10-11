@@ -6,7 +6,7 @@
             "name": "Launch LilLexi",
             "request": "launch",
             "mainClass": "LilLexi",
-            "projectName": "LilLexi_4f6e98f6",
+            "projectName": "LilLexi_68f0c358",
             "vmArgs": "-XstartOnFirstThread"
         }
     ]
