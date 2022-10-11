@@ -1,6 +1,5 @@
 package gui;
 
-import glyphs.Glyph;
 import glyphs.graphical.Character;
 
 public class Control {

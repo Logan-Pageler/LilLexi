@@ -27,5 +27,18 @@ public class Row extends Glyph{
     this.setWidth(this.getWidth() + child.getWidth());
     this.setHeight(Math.max(this.getHeight(), child.getHeight()));
   }
-  // TODO: override remove method to recalculate width and position of children
+
+  @Override
+  public void remove(int index) {
+    Glyph removedChild = this.children.remove(index);
+    int curX = this.getX();
+    int curHeight = 0;
+    for (Glyph g: children) {
+      g.setPosition(curX, this.getY());
+      curX += g.getWidth();
+      curHeight = Math.max(curHeight, g.getHeight());
+    }
+    this.setWidth(this.getWidth() - removedChild.getWidth());
+    this.setHeight(curHeight);
+  }
 }
