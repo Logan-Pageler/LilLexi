@@ -27,6 +27,5 @@ public class Row extends Glyph{
     this.setWidth(this.getWidth() + child.getWidth());
     this.setHeight(Math.max(this.getHeight(), child.getHeight()));
   }
-
-  
+  // TODO: override remove method to recalculate width and position of children
 }

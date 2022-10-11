@@ -1,6 +1,5 @@
 package gui;
 
-import java.util.List;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
@@ -23,8 +22,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Slider;
-
-import glyphs.Glyph;
 
 public class Window {
 
