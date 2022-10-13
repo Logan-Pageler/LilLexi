@@ -1,16 +1,16 @@
 package glyphs.formatting;
-import org.eclipse.swt.graphics.GC;
 
 import glyphs.Glyph;
+import java.awt.Graphics;
 
-public class Column extends Glyph{
-  public Column(int x, int y){
+public class Column extends Glyph {
+  public Column(int x, int y) {
     super(x, y, 0, 0);
   }
 
   @Override
-  public void draw(GC gc) {
-    for (Glyph g: children)  {
+  public void draw(Graphics gc) {
+    for (Glyph g : children) {
       g.draw(gc);
     }
   }
@@ -19,7 +19,7 @@ public class Column extends Glyph{
   public void add(int index, Glyph child) {
     this.children.add(index, child);
     int curY = this.getY();
-    for (Glyph g: children) {
+    for (Glyph g : children) {
       g.setPosition(this.getX(), curY);
       curY += g.getHeight();
     }
@@ -32,7 +32,7 @@ public class Column extends Glyph{
     Glyph removedChild = this.children.remove(index);
     int curY = this.getY();
     int curWidth = 0;
-    for (Glyph g: children) {
+    for (Glyph g : children) {
       g.setPosition(this.getX(), curY);
       curY += g.getHeight();
       curWidth = Math.max(curWidth, g.getWidth());

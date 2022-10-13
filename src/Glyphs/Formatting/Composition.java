@@ -2,8 +2,7 @@ package glyphs.formatting;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.eclipse.swt.graphics.GC;
+import java.awt.Graphics;
 
 import compositors.Compositor;
 import glyphs.Glyph;
@@ -18,12 +17,12 @@ public class Composition extends Glyph {
   }
 
   @Override
-  public void draw(GC gc) {
-    for (Glyph g: children) {
+  public void draw(Graphics gc) {
+    for (Glyph g : children) {
       g.draw(gc);
     }
   }
-  
+
   public void setCompositor(Compositor c) {
     this.compositor = c;
   }

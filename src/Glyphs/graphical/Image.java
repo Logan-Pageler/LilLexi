@@ -1,20 +1,21 @@
 package glyphs.graphical;
 
-import org.eclipse.swt.graphics.GC;
+import java.awt.Graphics;
 
 import glyphs.Glyph;
+import java.awt.image.BufferedImage;
 
-public class Image extends Glyph{
-  private org.eclipse.swt.graphics.Image imageObj;
+public class Image extends Glyph {
+  private BufferedImage imageObj;
 
-  public Image(org.eclipse.swt.graphics.Image image, int x, int y) {
-    super(x, y, image.getBounds().width, image.getBounds().height);
+  public Image(BufferedImage image, int x, int y) {
+    super(x, y, image.getWidth(), image.getHeight());
     this.imageObj = image;
   }
 
   @Override
-  public void draw(GC gc) {
-    gc.drawImage(this.imageObj, this.getX(), this.getY());
+  public void draw(Graphics g) {
+    g.drawImage(this.imageObj, this.getX(), this.getY(), null);
   }
-  
+
 }

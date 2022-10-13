@@ -1,5 +1,9 @@
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+
 import gui.Control;
 import gui.Document;
+import gui.Menu;
 import gui.Window;
 
 /**
@@ -7,23 +11,26 @@ import gui.Window;
  * 
  */
 
-public class LilLexi
-{
-	static private Document currentDoc = null;
+public class LilLexi {
 
-	public static void main(String args[])
-	{
-		if (currentDoc == null)
-			currentDoc = new Document();
-		Window lexiUI = new Window();
-		lexiUI.setCurrentDoc( currentDoc );
-		currentDoc.setUI(lexiUI);
-		
-		Control lexiControl = new Control( currentDoc );
-		lexiUI.setController( lexiControl );
-		
-		lexiUI.start();
-	} 
+	public static void main(String args[]) {
+
+		Window window = new Window();
+		Document currentDoc = new Document();
+		Control lexiControl = new Control(currentDoc);
+		JFrame f = new JFrame();
+
+		window.setCurrentDoc(currentDoc);
+		window.setControl(lexiControl);
+
+		Menu menu = new Menu();
+		menu.setController(lexiControl);
+
+		f.setJMenuBar(menu);
+		f.add(window);
+		f.setSize(400, 400);
+		// f.setLayout(null);
+		f.setVisible(true);
+
+	}
 }
-
-
