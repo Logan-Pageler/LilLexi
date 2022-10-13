@@ -53,4 +53,7 @@ public class Document {
 		ui.updateUI();
 	}
 
+	public void updateCursor() {
+
+	}
 }
