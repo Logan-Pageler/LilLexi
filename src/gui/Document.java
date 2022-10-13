@@ -36,18 +36,7 @@ public class Document {
 		this.ui = ui;
 	}
 
-	/**
-	 * add a char
-	 */
-	public void add(char c) {
-		// glyphs.add(new Glyph(c));
-		page.add(
-				page.getChildrenCount(),
-				new Character(c));
-		ui.updateUI();
-	}
-
-	public void add(Glyph g) {
+	public void addGlyph(Glyph g) {
 		pointer.add(index, g);
 		ui.updateUI();
 	}
@@ -57,6 +46,11 @@ public class Document {
 	 */
 	public Glyph getPage() {
 		return page;
+	}
+
+	public void removeGlyph() {
+		pointer.remove(index);
+		ui.updateUI();
 	}
 
 }

@@ -98,8 +98,7 @@ public class Window {
 
         canvas.addKeyListener(new KeyListener() {
             public void keyPressed(KeyEvent e) {
-                System.out.println("key " + e.character);
-                lexiControl.add(e.character);
+                lexiControl.keyPressed(e.keyCode);
             }
 
             public void keyReleased(KeyEvent e) {

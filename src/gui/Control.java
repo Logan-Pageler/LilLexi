@@ -1,5 +1,7 @@
 package gui;
 
+import org.eclipse.swt.SWT;
+
 import glyphs.Glyph;
 import glyphs.graphical.Character;
 
@@ -19,17 +21,39 @@ public class Control {
     }
 
     /**
-     * selectCard user selects a card
-     */
-    public void add(char c) {
-        currentDoc.add(new Character(c));
-        currentDoc.index++;
-    }
-
-    /**
      * quitEditor user quits
      */
     public void quitEditor() {
         System.exit(0);
+    }
+
+    public void keyPressed(int keyCode) {
+        System.out.println(keyCode);
+        switch (keyCode) {
+            case SWT.ARROW_LEFT:
+                if (currentDoc.index != 0)
+                    currentDoc.index--;
+                break;
+            case SWT.ARROW_RIGHT:
+                if (currentDoc.index != currentDoc.pointer.getChildrenCount())
+                    currentDoc.index++;
+                break;
+            case SWT.BS:
+                if (currentDoc.index != 0) {
+                    currentDoc.index--;
+                    currentDoc.removeGlyph();
+                    System.out.println(currentDoc.pointer.getChildrenCount());
+                }
+                break;
+            case SWT.DEL:
+                if (currentDoc.index != 0) {
+                    currentDoc.index--;
+                    currentDoc.removeGlyph();
+                }
+                break;
+            default:
+                currentDoc.addGlyph(new Character((char) keyCode));
+                currentDoc.index++;
+        }
     }
 }
