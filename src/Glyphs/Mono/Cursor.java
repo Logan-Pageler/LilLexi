@@ -4,33 +4,44 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.chrono.HijrahEra;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import glyphs.Glyph;
 
 public class Cursor extends MonoGlyph {
 
-    BufferedImage cursor;
+    Image cursor;
+    int width, height;
 
-    public Cursor(Glyph child) {
+    public Cursor(Glyph child, int width, int height) {
         super(child);
-        try {
-            cursor = ImageIO.read(new File("assets/cursor.gif"));
-        } catch (IOException e) {
-            cursor = null;
-            e.printStackTrace();
-        }
-        bounds = child.getBounds();
+        cursor = new ImageIcon("assets/cursor.gif").getImage();
+
+        this.width = width;
+        this.height = height;
+        cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
+        this.bounds = child.getBounds();
 
     }
 
     @Override
-    public void draw(Graphics gc) {
+    public void draw(Graphics g) {
         if (cursor != null) {
-            gc.drawImage(cursor, bounds.x, bounds.y, null);
+            g.drawImage(cursor, bounds.x + bounds.width, bounds.y - height, null);
         }
+        child.draw(g);
 
+    }
+
+    public void setChild(Glyph child) {
+        super.setChild(child);
+
+        cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
+        System.out.println(bounds.y + ", child: " + child.getBounds().y);
+        this.bounds = child.getBounds();
     }
 
 }
