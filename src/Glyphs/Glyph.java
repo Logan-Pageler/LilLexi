@@ -70,6 +70,16 @@ public abstract class Glyph {
     }
 
     /**
+     * Sets a child at the given index
+     * 
+     * @param index index to do replace
+     * @param glyph glyph to set to
+     */
+    public void set(int index, Glyph glyph) {
+        children.set(index, glyph);
+    }
+
+    /**
      * Removes child at index
      * 
      * @param index index to remove child
@@ -176,4 +186,15 @@ public abstract class Glyph {
     public void setParent(Glyph parent) {
         this.parent = parent;
     }
+
+    /**
+     * Gets index of child in children list
+     * 
+     * @param child child glyph to get index of
+     * @return index of child
+     */
+    public int indexOf(Glyph child) {
+        return this.children.indexOf(child);
+    }
+
 }

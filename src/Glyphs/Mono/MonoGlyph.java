@@ -1,12 +1,13 @@
 package glyphs.mono;
 
 import java.util.List;
+import java.awt.Rectangle;
 
 import glyphs.Glyph;
 
 public abstract class MonoGlyph extends Glyph {
 
-    private Glyph child;
+    protected Glyph child;
 
     public MonoGlyph(Glyph child) {
         this.child = child;
@@ -113,6 +114,19 @@ public abstract class MonoGlyph extends Glyph {
      */
     public void setChild(Glyph child) {
         this.child = child;
+    }
+
+    /**
+     * 
+     */
+    public void setBounds(Rectangle rect) {
+        this.bounds = rect;
+        child.setBounds(rect);
+    }
+
+    public void setPosition(int x, int y) {
+        this.bounds.setLocation(x, y);
+        child.setPosition(x, y);
     }
 
 }
