@@ -47,6 +47,17 @@ public class Composition extends Glyph {
     compositor.compose();
   }
 
+  @Override
+  public void set(int index, Glyph g) {
+    this.graphicalGlyphs.set(index, g);
+    compositor.compose();
+  }
+
+  @Override
+  public int indexOf(Glyph g) {
+    return this.graphicalGlyphs.indexOf(g);
+  }
+
   public Glyph getChild(int index) {
     return graphicalGlyphs.get(index);
   }

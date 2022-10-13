@@ -27,6 +27,7 @@ public class SimpleCompositor extends Compositor {
       } else {
         curRow = new Row(comp.getX(), comp.getY());
         col.add(col.getChildrenCount(), curRow);
+        curRow.add(curRow.getChildrenCount(), g);
       }
     }
     List<Glyph> retList = new ArrayList<>();
