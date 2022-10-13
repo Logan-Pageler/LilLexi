@@ -1,30 +1,35 @@
 package glyphs.mono;
 
-import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageLoader;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-import java.awt.Rectangle;
+import javax.imageio.ImageIO;
 
 import glyphs.Glyph;
 
 public class Cursor extends MonoGlyph {
 
-    ImageLoader cursor;
+    BufferedImage cursor;
 
     public Cursor(Glyph child) {
         super(child);
-        cursor = new ImageLoader();
-        cursor.load("assets/cursor.gif");
+        try {
+            cursor = ImageIO.read(new File("assets/cursor.gif"));
+        } catch (IOException e) {
+            cursor = null;
+            e.printStackTrace();
+        }
         bounds = child.getBounds();
 
     }
 
     @Override
-    public void draw(GC gc) {
-        // TODO Auto-generated method stub
-
-        gc.drawImage(new Image(null, "assets/cursor.gif"), (int) bounds.getX(), (int) bounds.getY());
+    public void draw(Graphics gc) {
+        if (cursor != null) {
+            gc.drawImage(cursor, bounds.x, bounds.y, null);
+        }
 
     }
 

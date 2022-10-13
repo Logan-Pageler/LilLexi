@@ -10,6 +10,7 @@ import glyphs.Glyph;
 import glyphs.formatting.Row;
 import glyphs.graphical.Character;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -26,19 +27,11 @@ public class Document {
 	 * Ctor
 	 */
 	public Document() {
-		page = new Row(0, 0);
-	}
-
-	/**
-	 * setUI
-	 */
-	public void setUI(Window ui) {
-		this.ui = ui;
+		page = new Row(0, 20);
 	}
 
 	public void addGlyph(Glyph g) {
 		pointer.add(index, g);
-		ui.updateUI();
 	}
 
 	/**
@@ -50,10 +43,13 @@ public class Document {
 
 	public void removeGlyph() {
 		pointer.remove(index);
-		ui.updateUI();
 	}
 
 	public void updateCursor() {
 
+	}
+
+	public void draw(Graphics g) {
+		page.draw(g);
 	}
 }

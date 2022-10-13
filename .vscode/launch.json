@@ -7,7 +7,6 @@
             "request": "launch",
             "mainClass": "LilLexi",
             "projectName": "LilLexi_68f0c358",
-            "vmArgs": "-XstartOnFirstThread"
         }
     ]
 }

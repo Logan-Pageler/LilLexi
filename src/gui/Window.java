@@ -2,19 +2,63 @@ package gui;
 
 import java.awt.*;
 
-public class Window extends Canvas {
+import javax.swing.JSpinner.ListEditor;
 
+public class Window extends Canvas implements Runnable {
+
+    private static final long DELAY = 13;
     private Document currentDoc;
-    private Control lexiControl;
+    private Thread animator;
+    private InputListener listener;
+
+    public Window() {
+        listener = new InputListener();
+        this.addKeyListener(listener);
+        this.addMouseListener(listener);
+    }
 
     public void paint(Graphics g) {
+        super.paint(g);
+        currentDoc.draw(g);
     }
 
     public void setCurrentDoc(Document currentDoc) {
         this.currentDoc = currentDoc;
     }
 
-    public void setController(Control lexiControl) {
-        this.lexiControl = lexiControl;
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        animator = new Thread(this);
+        animator.start();
+    }
+
+    @Override
+    public void run() {
+        long beforeTime, timeDiff, sleep;
+
+        beforeTime = System.currentTimeMillis();
+
+        while (true) {
+            repaint();
+
+            timeDiff = System.currentTimeMillis() - beforeTime;
+            sleep = DELAY - timeDiff;
+
+            if (sleep < 0)
+                sleep = 2;
+            try {
+                Thread.sleep(sleep);
+            } catch (InterruptedException e) {
+                System.out.println("interrupted");
+            }
+
+            beforeTime = System.currentTimeMillis();
+        }
+
+    }
+
+    public void setControl(Control lexiControl) {
+        listener.setController(lexiControl);
     }
 }

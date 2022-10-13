@@ -3,8 +3,7 @@ package glyphs;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.eclipse.swt.graphics.GC;
+import java.awt.Graphics;
 
 public abstract class Glyph {
 
@@ -158,10 +157,11 @@ public abstract class Glyph {
      * 
      * @param gc graphic context to draw to
      */
-    public abstract void draw(GC gc);
+    public abstract void draw(Graphics g);
 
     /**
      * gets parent glyph
+     * 
      * @return parent of this glyph
      */
     public Glyph getParent() {
@@ -170,6 +170,7 @@ public abstract class Glyph {
 
     /**
      * Sets this glyphs parent
+     * 
      * @param parent glyph to set parent to
      */
     public void setParent(Glyph parent) {
