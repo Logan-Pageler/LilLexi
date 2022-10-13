@@ -1,17 +1,11 @@
 package gui;
 
-/**
- * Lil Lexi Document Model
- * 
- */
-import java.util.List;
-
-import glyphs.Glyph;
-import glyphs.formatting.Row;
-import glyphs.graphical.Character;
-
 import java.awt.Graphics;
-import java.util.ArrayList;
+
+import compositors.Compositor;
+import compositors.SimpleCompositor;
+import glyphs.Glyph;
+import glyphs.formatting.Composition;
 
 /**
  * LilLexiDoc
@@ -22,12 +16,18 @@ public class Document {
 
 	protected Glyph pointer;
 	protected int index;
+  private static final int MAXWIDTH = 400;
 
 	/**
 	 * Ctor
 	 */
 	public Document() {
-		page = new Row(0, 20);
+    Composition comp = new Composition(0, 20);
+    Compositor compositor = new SimpleCompositor(MAXWIDTH);
+    comp.setCompositor(compositor);
+    compositor.setComposition(comp);
+		page = comp;
+    
 	}
 
 	public void addGlyph(Glyph g) {

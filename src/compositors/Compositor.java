@@ -12,5 +12,5 @@ public abstract class Compositor {
     this.comp = c;
   }
 
-  private Composition comp;
+  protected Composition comp;
 }

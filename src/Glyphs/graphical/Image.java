@@ -1,9 +1,9 @@
 package glyphs.graphical;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import glyphs.Glyph;
-import java.awt.image.BufferedImage;
 
 public class Image extends Glyph {
   private BufferedImage imageObj;
