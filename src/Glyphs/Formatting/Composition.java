@@ -13,7 +13,7 @@ public class Composition extends Glyph {
 
   public Composition(int x, int y) {
     super(x, y, 0, 0);
-    graphicalGlyphs = new ArrayList<Glyph>();
+    graphicalGlyphs = new ArrayList<>();
   }
 
   @Override
@@ -58,10 +58,12 @@ public class Composition extends Glyph {
     return this.graphicalGlyphs.indexOf(g);
   }
 
+  @Override
   public Glyph getChild(int index) {
     return graphicalGlyphs.get(index);
   }
 
+  @Override
   public int getChildrenCount() {
     return graphicalGlyphs.size();
   }
@@ -73,10 +75,6 @@ public class Composition extends Glyph {
   public void addToList(int index, Glyph glyph) {
     graphicalGlyphs.add(index, glyph);
     compositor.compose();
-  }
-
-  public List<Glyph> getGraphicalGlyphs() {
-    return graphicalGlyphs;
   }
 
   public void setGlyphs(List<Glyph> glyphs) {
