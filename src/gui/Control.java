@@ -1,7 +1,8 @@
 package gui;
 
-import glyphs.Glyph;
 import glyphs.graphical.Character;
+
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 
 public class Control {
@@ -43,12 +44,10 @@ public class Control {
                     currentDoc.removeGlyph();
                 }
                 break;
+            default:
+                currentDoc.addGlyph(new Character((char) keyCode, Font.SANS_SERIF, Font.PLAIN, 10));
+                currentDoc.index++;
 
         }
-    }
-
-    public void KeyTyped(char c) {
-        currentDoc.addGlyph(new Character(c));
-        currentDoc.index++;
     }
 }
