@@ -1,8 +1,11 @@
 package gui;
 
+<<<<<<< HEAD
 import org.eclipse.swt.SWT;
 
 import glyphs.Glyph;
+=======
+>>>>>>> 6a7f48e5938e0edd734f1ed9bb6cc53f3420e809
 import glyphs.graphical.Character;
 
 public class Control {
