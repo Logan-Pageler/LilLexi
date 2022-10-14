@@ -40,6 +40,7 @@ public class Window extends Canvas implements Runnable {
         beforeTime = System.currentTimeMillis();
 
         while (true) {
+            currentDoc.setFrameSize(this.getWidth(), this.getHeight());
             repaint();
 
             timeDiff = System.currentTimeMillis() - beforeTime;

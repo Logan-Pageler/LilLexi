@@ -38,9 +38,9 @@ public class Cursor extends MonoGlyph {
 
     public void setChild(Glyph child) {
         super.setChild(child);
-
-        cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
         this.bounds = child.getBounds();
+        cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
+
     }
 
 }

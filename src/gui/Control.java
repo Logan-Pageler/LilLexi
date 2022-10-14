@@ -72,4 +72,8 @@ public class Control {
     public void setFont(String font) {
         this.font = font;
     }
+
+    public void setFontSize(int size) {
+        fontSize = size;
+    }
 }

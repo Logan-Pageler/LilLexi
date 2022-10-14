@@ -7,29 +7,34 @@ import compositors.SimpleCompositor;
 import glyphs.Glyph;
 import glyphs.formatting.Composition;
 import glyphs.graphical.Empty;
+import glyphs.mono.Border;
 import glyphs.mono.Cursor;
+import glyphs.mono.Scroll;
 
 /**
  * LilLexiDoc
  */
 public class Document {
 	private Window ui;
-	private Glyph page;
+	private Scroll page;
 	private Cursor cursor;
 
 	protected int index;
-  private static final int MAXWIDTH = 400;
+	private static final int MAXWIDTH = 400;
 
 	/**
 	 * Ctor
 	 */
 	public Document() {
-    Composition comp = new Composition(0, 20);
-    Compositor compositor = new SimpleCompositor(MAXWIDTH);
-    comp.setCompositor(compositor);
-    compositor.setComposition(comp);
-		page = comp;
-    
+		Composition comp = new Composition(0, 20);
+		Compositor compositor = new SimpleCompositor(MAXWIDTH);
+		comp.setCompositor(compositor);
+		compositor.setComposition(comp);
+
+		Border border = new Border(0, 0, MAXWIDTH + 50, 400, 25, 25, comp);
+		Scroll scroll = new Scroll(border, 400, 400);
+		page = scroll;
+
 		cursor = new Cursor(new Empty(0, 20), 5, 20);
 		page.add(0, cursor);
 	}
@@ -75,10 +80,13 @@ public class Document {
 			cursor.setChild(page.getChild(this.index - 1));
 			page.set(this.index - 1, cursor);
 		}
-		System.out.println(this.index + ", curos: " + index);
 	}
 
 	public void draw(Graphics g) {
 		page.draw(g);
+	}
+
+	public void setFrameSize(int width, int height) {
+		page.updateScreenSize(width, height);
 	}
 }
