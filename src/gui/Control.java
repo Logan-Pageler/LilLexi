@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 public class Control {
 
     private Document currentDoc;
+    String font;
+    int fontSize, fontType;
 
     /**
      * LilLexiControl
@@ -16,6 +18,10 @@ public class Control {
         this.currentDoc = doc;
 
         currentDoc.index = 0;
+
+        font = Font.SANS_SERIF;
+        fontType = Font.PLAIN;
+        fontSize = 20;
 
     }
 
@@ -37,7 +43,7 @@ public class Control {
                 }
                 break;
             default:
-                currentDoc.addGlyph(new Character((char) keyCode, Font.SANS_SERIF, Font.PLAIN, 20));
+                currentDoc.addGlyph(new Character((char) keyCode, font, fontType, fontSize));
                 currentDoc.index++;
                 currentDoc.updateCursor();
 
@@ -63,7 +69,7 @@ public class Control {
 
     }
 
-    public void setFont(String monospaced) {
-
+    public void setFont(String font) {
+        this.font = font;
     }
 }

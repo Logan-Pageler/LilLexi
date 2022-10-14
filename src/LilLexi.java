@@ -3,8 +3,8 @@ import javax.swing.JMenuBar;
 
 import gui.Control;
 import gui.Document;
-import gui.Menu;
 import gui.Window;
+import gui.menus.Menu;
 
 /**
  * Lil Lexi Document Editor
@@ -12,25 +12,24 @@ import gui.Window;
  */
 
 public class LilLexi {
+	public static final JFrame FRAME = new JFrame();
 
 	public static void main(String args[]) {
 
 		Window window = new Window();
 		Document currentDoc = new Document();
 		Control lexiControl = new Control(currentDoc);
-		JFrame f = new JFrame();
 
 		window.setCurrentDoc(currentDoc);
 		window.setControl(lexiControl);
 
-		Menu menu = new Menu();
-		menu.setController(lexiControl);
+		Menu menu = new Menu(lexiControl);
 
-		f.setJMenuBar(menu);
-		f.add(window);
-		f.setSize(400, 400);
-		// f.setLayout(null);
-		f.setVisible(true);
+		FRAME.setJMenuBar(menu);
+		FRAME.add(window);
+		FRAME.setSize(400, 400);
+		FRAME.setVisible(true);
+		FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 }

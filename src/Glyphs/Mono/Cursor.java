@@ -40,7 +40,6 @@ public class Cursor extends MonoGlyph {
         super.setChild(child);
 
         cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
-        System.out.println(bounds.y + ", child: " + child.getBounds().y);
         this.bounds = child.getBounds();
     }
 
