@@ -1,5 +1,6 @@
 package glyphs;
 
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,7 +112,12 @@ public abstract class Glyph {
      * @param y y coordinate to move Glyph to
      */
     public void setPosition(int x, int y) {
+        int diffX = x - this.getX();
+        int diffY = y - this.getY();
         this.bounds.setLocation(x, y);
+        for (Glyph g: children) {
+          g.setPosition(g.getX() + diffX, g.getY() + diffY);
+        }
     }
 
     /**

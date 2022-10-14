@@ -16,12 +16,14 @@ public class SimpleCompositor extends Compositor {
     this.maxWidth = maxWidth;
   }
 
+  // TODO: update to not break in the middle of a word -- more impo
+  // TODO: more importantly, update to create new rows on linebreak characters
   @Override
   public void compose() {
     Column col = new Column(comp.getX(), comp.getY());
     Row curRow = new Row(comp.getX(), comp.getY());
     col.add(col.getChildrenCount(), curRow);
-    for (Glyph g: comp.getGraphicalGlyphs()) {
+    for (Glyph g: comp.getChildren()) {
       if (curRow.getWidth() + g.getWidth() < maxWidth) {
         curRow.add(curRow.getChildrenCount(), g);
       } else {
