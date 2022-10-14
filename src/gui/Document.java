@@ -8,6 +8,7 @@ import glyphs.Glyph;
 import glyphs.formatting.Composition;
 import glyphs.graphical.Empty;
 import glyphs.mono.Cursor;
+import visitors.SpellcheckVisitor;
 
 /**
  * LilLexiDoc
@@ -29,6 +30,9 @@ public class Document {
     comp.setCompositor(compositor);
     compositor.setComposition(comp);
 		page = comp;
+    
+    SpellcheckVisitor spellChecker = new SpellcheckVisitor("assets/words.txt");
+    comp.addVisitor(spellChecker);
     
 		cursor = new Cursor(new Empty(0, 20), 5, 20);
 		page.add(0, cursor);

@@ -2,8 +2,11 @@ package glyphs.graphical;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
 
 import glyphs.Glyph;
+import iterators.NullIterator;
+import visitors.Visitor;
 
 public class Image extends Glyph {
   private BufferedImage imageObj;
@@ -16,6 +19,16 @@ public class Image extends Glyph {
   @Override
   public void draw(Graphics g) {
     g.drawImage(this.imageObj, this.getX(), this.getY(), null);
+  }
+
+  @Override
+  public void accept(Visitor v) {
+    v.visitImage(this);
+  }
+
+  @Override
+  public Iterator<Glyph> iterator() {
+    return new NullIterator();
   }
 
 }

@@ -3,8 +3,10 @@ package glyphs;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.awt.Graphics;
+
+import visitors.Visitor;
 
 public abstract class Glyph {
 
@@ -106,7 +108,7 @@ public abstract class Glyph {
     }
 
     /**
-     * Sets position of the Glyph
+     * Sets position of the Glyph, updates the position of all children
      * 
      * @param x x coordinate to move Glyph to
      * @param y y coordinate to move Glyph to
@@ -202,5 +204,23 @@ public abstract class Glyph {
     public int indexOf(Glyph child) {
         return this.children.indexOf(child);
     }
+
+    /**
+     * Returns self to the given visitor using a method specific
+     * to each particular glyph.
+     * 
+     * Used to allow varied traversals over a recursive structure
+     * while seeking particular data
+     * 
+     * @param v Visitor to be accepted
+     */
+    public abstract void accept(Visitor v);
+
+    /**
+     * Returns an iterator over the children of this Glyph
+     * 
+     * @return an iterator over the children of this Glyph
+     */
+    public abstract Iterator<Glyph> iterator();
 
 }

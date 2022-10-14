@@ -1,8 +1,16 @@
 package glyphs.formatting;
 
-import glyphs.Glyph;
 import java.awt.Graphics;
+import java.util.Iterator;
 
+import glyphs.Glyph;
+import visitors.Visitor;
+
+/**
+ * A vertical Column glyph, whose children are added one on top of the other.
+ * Its height is the sum of each of its children's heights, and its width is
+ * that of its widest child.
+ */
 public class Column extends Glyph {
   public Column(int x, int y) {
     super(x, y, 0, 0);
@@ -39,5 +47,15 @@ public class Column extends Glyph {
     }
     this.setHeight(this.getHeight() - removedChild.getHeight());
     this.setWidth(curWidth);
+  }
+
+  @Override
+  public void accept(Visitor v) {
+    v.visitColumn(this);
+  }
+
+  @Override
+  public Iterator<Glyph> iterator() {
+    return children.iterator();
   }
 }

@@ -1,8 +1,17 @@
 package glyphs.formatting;
 
 import java.awt.Graphics;
-import glyphs.Glyph;
+import java.util.Iterator;
 
+import glyphs.Glyph;
+import visitors.Visitor;
+
+/**
+ * A horizontal Row class whose children are added in a horizontal sequence one
+ * after another. 
+ * Its width is the sum of its children's widths, and its height
+ * is that of its tallest child
+ */
 public class Row extends Glyph {
   public Row(int x, int y) {
     super(x, y, 0, 0);
@@ -39,5 +48,15 @@ public class Row extends Glyph {
     }
     this.setWidth(this.getWidth() - removedChild.getWidth());
     this.setHeight(curHeight);
+  }
+
+  @Override
+  public void accept(Visitor v) {
+    v.visitRow(this);
+  }
+
+  @Override
+  public Iterator<Glyph> iterator() {
+    return children.iterator();
   }
 }
