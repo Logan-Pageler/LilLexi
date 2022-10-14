@@ -15,6 +15,7 @@ public class Window extends Canvas implements Runnable {
         listener = new InputListener();
         this.addKeyListener(listener);
         this.addMouseListener(listener);
+        this.addMouseWheelListener(listener);
     }
 
     public void paint(Graphics g) {

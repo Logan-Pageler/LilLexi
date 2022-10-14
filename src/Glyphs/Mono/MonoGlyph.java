@@ -129,4 +129,12 @@ public abstract class MonoGlyph extends Glyph {
         child.setPosition(x, y);
     }
 
+    public int indexOf(Glyph g) {
+        return child.indexOf(g);
+    }
+
+    public void set(int index, Glyph g) {
+        child.set(index, g);
+    }
+
 }

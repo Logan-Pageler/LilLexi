@@ -2,8 +2,11 @@ package glyphs.mono;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Iterator;
 
 import glyphs.Glyph;
+import iterators.NullIterator;
+import visitors.Visitor;
 
 public class Scroll extends MonoGlyph {
 
@@ -32,22 +35,39 @@ public class Scroll extends MonoGlyph {
         this.screenWidth = width;
         this.screenHeight = height;
         this.maxScroll = bounds.height - screenHeight;
-        child.setPosition((width + bounds.width) / 2, bounds.y);
+        child.setPosition((width - bounds.width) / 2, bounds.y);
         scrollTo(scroll);
     }
 
-    private void scrollTo(int scroll) {
+    public void scrollTo(int scroll) {
         this.scroll = Math.min(scroll, maxScroll);
         this.scroll = Math.max(0, this.scroll);
-        setPosition(bounds.x, scroll);
+        setPosition(bounds.x, -scroll);
     }
 
     @Override
     public void draw(Graphics g) {
         g.setColor(COLOR);
-        g.drawRect(screenWidth - WIDTH, (scroll / maxScroll) * (screenHeight - screenHeight / bounds.height), WIDTH,
-                screenHeight / bounds.height);
+        if (maxScroll > 0) {
+            g.fillRect(screenWidth - WIDTH,
+                    (scroll) * (screenHeight - screenHeight * screenHeight / bounds.height) / maxScroll, WIDTH,
+                    screenHeight * screenHeight / bounds.height);
+        }
         child.draw(g);
     }
 
+    @Override
+    public void accept(Visitor v) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public Iterator<Glyph> iterator() {
+        return new NullIterator();
+    }
+
+    public int getScroll() {
+        return scroll;
+    }
 }

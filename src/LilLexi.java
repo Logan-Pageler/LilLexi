@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
@@ -27,9 +29,10 @@ public class LilLexi {
 
 		FRAME.setJMenuBar(menu);
 		FRAME.add(window);
-		FRAME.setSize(400, 400);
+		FRAME.setSize(500, 400);
 		FRAME.setVisible(true);
 		FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		FRAME.setMinimumSize(new Dimension(500, 300));
 
 	}
 }

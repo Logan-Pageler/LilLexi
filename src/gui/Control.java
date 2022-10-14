@@ -76,4 +76,9 @@ public class Control {
     public void setFontSize(int size) {
         fontSize = size;
     }
+
+    public void scroll(int wheelRotation) {
+        currentDoc.scroll(wheelRotation);
+    }
+
 }

@@ -2,7 +2,7 @@ package gui;
 
 import java.awt.event.*;
 
-public class InputListener implements MouseListener, KeyListener {
+public class InputListener implements MouseListener, KeyListener, MouseWheelListener {
 
     private Control control;
 
@@ -54,6 +54,12 @@ public class InputListener implements MouseListener, KeyListener {
 
     public void setController(Control lexiControl) {
         this.control = lexiControl;
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        System.out.println(e.getWheelRotation());
+        control.scroll(e.getWheelRotation());
     }
 
 }

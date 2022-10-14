@@ -17,21 +17,22 @@ public class Cursor extends MonoGlyph {
     Image cursor;
     int width, height;
 
-    public Cursor(Glyph child, int width, int height) {
+    public Cursor(Glyph child, int width) {
         super(child);
         cursor = new ImageIcon("assets/cursor.gif").getImage();
 
         this.width = width;
-        this.height = height;
-        cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
         this.bounds = child.getBounds();
+        height = bounds.height;
+
+        cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
 
     }
 
     @Override
     public void draw(Graphics g) {
         if (cursor != null) {
-            g.drawImage(cursor, bounds.x + bounds.width, bounds.y - height, null);
+            g.drawImage(cursor, bounds.x + bounds.width, bounds.y, null);
         }
         child.draw(g);
 
@@ -40,22 +41,23 @@ public class Cursor extends MonoGlyph {
     public void setChild(Glyph child) {
         super.setChild(child);
         this.bounds = child.getBounds();
+        height = bounds.height;
         cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
 
     }
 
     @Override
     public void accept(Visitor v) {
-      if (child instanceof Character) {
-        v.visitCharacter((Character) child);
-      } else {
-        v.visitEmpty((Empty)child);
-      }
+        if (child instanceof Character) {
+            v.visitCharacter((Character) child);
+        } else {
+            v.visitEmpty((Empty) child);
+        }
     }
 
     @Override
     public Iterator<Glyph> iterator() {
-      return new NullIterator();
+        return new NullIterator();
     }
 
 }

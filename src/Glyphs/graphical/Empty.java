@@ -9,8 +9,8 @@ import visitors.Visitor;
 
 public class Empty extends Glyph {
 
-    public Empty(int x, int y) {
-        super(x, y, 0, 0);
+    public Empty(int x, int y, int width, int height) {
+        super(x, y, width, height);
     }
 
     @Override
@@ -19,11 +19,11 @@ public class Empty extends Glyph {
 
     @Override
     public void accept(Visitor v) {
-      v.visitEmpty(this);
+        v.visitEmpty(this);
     }
 
     @Override
     public Iterator<Glyph> iterator() {
-      return new NullIterator();
+        return new NullIterator();
     }
 }
