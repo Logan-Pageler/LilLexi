@@ -1,12 +1,19 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            "name": "Launch LilLexi",
-            "request": "launch",
-            "mainClass": "LilLexi",
-            "projectName": "LilLexi_68f0c358",
-        }
+      {
+        "type": "java",
+        "name": "Launch LilLexi",
+        "request": "launch",
+        "mainClass": "LilLexi",
+        "projectName": "LilLexi_c61e051b"
+      },
+      {
+        "type": "java",
+        "name": "Launch LilLexi",
+        "request": "launch",
+        "mainClass": "LilLexi",
+        "projectName": "LilLexi_68f0c358"
+      }
     ]
 }

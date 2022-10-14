@@ -1,19 +1,13 @@
 package gui;
 
-/**
- * Lil Lexi Document Model
- * 
- */
-import java.util.List;
+import java.awt.Graphics;
 
+import compositors.Compositor;
+import compositors.SimpleCompositor;
 import glyphs.Glyph;
-import glyphs.formatting.Row;
-import glyphs.graphical.Character;
+import glyphs.formatting.Composition;
 import glyphs.graphical.Empty;
 import glyphs.mono.Cursor;
-
-import java.awt.Graphics;
-import java.util.ArrayList;
 
 /**
  * LilLexiDoc
@@ -24,12 +18,18 @@ public class Document {
 	private Cursor cursor;
 
 	protected int index;
+  private static final int MAXWIDTH = 400;
 
 	/**
 	 * Ctor
 	 */
 	public Document() {
-		page = new Row(0, 20);
+    Composition comp = new Composition(0, 20);
+    Compositor compositor = new SimpleCompositor(MAXWIDTH);
+    comp.setCompositor(compositor);
+    compositor.setComposition(comp);
+		page = comp;
+    
 		cursor = new Cursor(new Empty(0, 20), 5, 20);
 		page.add(0, cursor);
 	}
