@@ -1,15 +1,16 @@
 package glyphs.mono;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.time.chrono.HijrahEra;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.util.Iterator;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import glyphs.Glyph;
+import glyphs.graphical.Character;
+import glyphs.graphical.Empty;
+import iterators.NullIterator;
+import visitors.Visitor;
 
 public class Cursor extends MonoGlyph {
 
@@ -41,6 +42,20 @@ public class Cursor extends MonoGlyph {
         this.bounds = child.getBounds();
         cursor = cursor.getScaledInstance(width, height, Image.SCALE_DEFAULT);
 
+    }
+
+    @Override
+    public void accept(Visitor v) {
+      if (child instanceof Character) {
+        v.visitCharacter((Character) child);
+      } else {
+        v.visitEmpty((Empty)child);
+      }
+    }
+
+    @Override
+    public Iterator<Glyph> iterator() {
+      return new NullIterator();
     }
 
 }

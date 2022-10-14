@@ -1,9 +1,9 @@
 package gui;
 
-import glyphs.graphical.Character;
-
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+
+import glyphs.graphical.Character;
 
 public class Control {
 

@@ -10,6 +10,7 @@ import glyphs.graphical.Empty;
 import glyphs.mono.Border;
 import glyphs.mono.Cursor;
 import glyphs.mono.Scroll;
+import visitors.SpellcheckVisitor;
 
 /**
  * LilLexiDoc
@@ -34,6 +35,9 @@ public class Document {
 		Border border = new Border(0, 0, MAXWIDTH + 50, 400, 25, 25, comp);
 		Scroll scroll = new Scroll(border, 400, 400);
 		page = scroll;
+
+		SpellcheckVisitor spellChecker = new SpellcheckVisitor("assets/words.txt");
+		comp.addVisitor(spellChecker);
 
 		cursor = new Cursor(new Empty(0, 20), 5, 20);
 		page.add(0, cursor);
