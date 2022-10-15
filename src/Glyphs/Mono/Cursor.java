@@ -9,14 +9,10 @@ import javax.swing.ImageIcon;
 import glyphs.Glyph;
 import glyphs.graphical.Character;
 import glyphs.graphical.Empty;
+import glyphs.graphical.Rectangle;
 import iterators.NullIterator;
 import visitors.Visitor;
 
-/**
- * A cursor to overlay on the currently selected character.
- * 
- * @author Logan
- */
 public class Cursor extends MonoGlyph {
 
     Image cursor;
@@ -43,7 +39,6 @@ public class Cursor extends MonoGlyph {
 
     }
 
-    @Override
     public void setChild(Glyph child) {
         super.setChild(child);
         this.bounds = child.getBounds();
@@ -56,6 +51,10 @@ public class Cursor extends MonoGlyph {
     public void accept(Visitor v) {
         if (child instanceof Character) {
             v.visitCharacter((Character) child);
+        } else if (child instanceof glyphs.graphical.Image) {
+            v.visitImage((glyphs.graphical.Image) child);
+        } else if (child instanceof Rectangle) {
+            v.visitRectangle((Rectangle) child);
         } else {
             v.visitEmpty((Empty) child);
         }
