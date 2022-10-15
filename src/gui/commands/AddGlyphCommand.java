@@ -3,6 +3,11 @@ package gui.commands;
 import glyphs.Glyph;
 import gui.Document;
 
+/**
+ * Command to represent when a glyph is added
+ * 
+ * @author Logan Pageler
+ */
 public class AddGlyphCommand extends Command {
 
     private Glyph glyph;

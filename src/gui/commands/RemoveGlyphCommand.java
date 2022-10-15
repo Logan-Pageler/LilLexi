@@ -3,6 +3,11 @@ package gui.commands;
 import glyphs.Glyph;
 import gui.Document;
 
+/**
+ * Command to represent when a glyph is removed
+ * 
+ * @author Logan Pageler
+ */
 public class RemoveGlyphCommand extends Command {
 
     Glyph removed;

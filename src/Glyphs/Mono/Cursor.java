@@ -13,6 +13,11 @@ import glyphs.graphical.Rectangle;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * Glyph to represent cursor on page. Will take height of child.
+ * 
+ * @author Logan Pageler
+ */
 public class Cursor extends MonoGlyph {
 
     Image cursor;
@@ -39,6 +44,7 @@ public class Cursor extends MonoGlyph {
 
     }
 
+    @Override
     public void setChild(Glyph child) {
         super.setChild(child);
         this.bounds = child.getBounds();

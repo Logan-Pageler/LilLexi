@@ -10,7 +10,8 @@ import gui.Window;
 import gui.menus.Menu;
 
 /**
- * Lil Lexi Document Editor main method, initializing the UI, Control, and Window.
+ * Lil Lexi Document Editor main method, initializing the UI, Control, and
+ * Window.
  * 
  * @author Logan
  */
@@ -30,10 +31,10 @@ public class LilLexi {
 
 		FRAME.setJMenuBar(menu);
 		FRAME.add(window);
-		FRAME.setSize(500, 400);
+		FRAME.setSize(1100, 800);
 		FRAME.setVisible(true);
 		FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		FRAME.setMinimumSize(new Dimension(500, 300));
+		FRAME.setMinimumSize(new Dimension(1100, 800));
 
 	}
 }

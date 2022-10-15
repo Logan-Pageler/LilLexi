@@ -8,6 +8,11 @@ import glyphs.Glyph;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * Glyph to represent scroll bar. Scroll children elements
+ * 
+ * @author Logan Pageler
+ */
 public class Scroll extends MonoGlyph {
 
     private final int WIDTH = 10;
@@ -17,11 +22,6 @@ public class Scroll extends MonoGlyph {
     private int maxScroll;
     private int scroll;
 
-    /**
-     * @param child
-     * @param screenWidth
-     * @param screenHeight
-     */
     public Scroll(Glyph child, int screenWidth, int screenHeight) {
         super(child);
         bounds = child.getBounds();
@@ -31,6 +31,12 @@ public class Scroll extends MonoGlyph {
         this.maxScroll = bounds.height - screenHeight;
     }
 
+    /**
+     * Updates the size of screen the scroll bar is in
+     * 
+     * @param width  screen width
+     * @param height screen height
+     */
     public void updateScreenSize(int width, int height) {
         this.screenWidth = width;
         this.screenHeight = height;
@@ -39,6 +45,11 @@ public class Scroll extends MonoGlyph {
         scrollTo(scroll);
     }
 
+    /**
+     * Scrolls to a point on the page.
+     * 
+     * @param scroll int pixels to scroll
+     */
     public void scrollTo(int scroll) {
         this.scroll = Math.min(scroll, maxScroll);
         this.scroll = Math.max(0, this.scroll);
@@ -67,6 +78,11 @@ public class Scroll extends MonoGlyph {
         return new NullIterator();
     }
 
+    /**
+     * gets number of pixels scrolled down
+     * 
+     * @return int pixel travel distance
+     */
     public int getScroll() {
         return scroll;
     }

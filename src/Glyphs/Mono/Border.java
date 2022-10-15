@@ -9,9 +9,16 @@ import glyphs.Glyph;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * Glyph to place black border around any glphy with margins on the side.
+ * 
+ * @author Logan Pageler
+ */
 public class Border extends MonoGlyph {
     private int marginY;
     private int marginX;
+    private int minHeight;
+    private int minWidth;
 
     private final Color COLOR = Color.BLACK;
 
@@ -20,6 +27,8 @@ public class Border extends MonoGlyph {
         bounds = new Rectangle(x, y, width, height);
         this.marginX = marginX;
         this.marginY = marginY;
+        this.minHeight = height;
+        this.minWidth = width;
         child.setBounds(new Rectangle(
                 x + marginX,
                 y + marginY,
@@ -29,6 +38,9 @@ public class Border extends MonoGlyph {
 
     @Override
     public void draw(Graphics g) {
+        bounds.setSize(Math.max(child.getWidth() + 2 * marginX, minWidth),
+                Math.max(child.getHeight() + 2 * marginY, minHeight));
+
         g.setColor(COLOR);
         g.drawRect(getX(), getY(), getWidth(), getHeight());
         child.draw(g);

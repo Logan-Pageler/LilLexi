@@ -29,6 +29,12 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.geom.AffineTransform;
 
+/**
+ * Class to create insert drop down menu and organize it. Also handles when
+ * buttons are pressed
+ * 
+ * @author Logan Pageler
+ */
 public class InsertMenu extends JMenu {
 
     public InsertMenu(Control control) {
@@ -125,22 +131,22 @@ public class InsertMenu extends JMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LilLexi.FRAME.setEnabled(false);
-                // invoke the showsOpenDialog function to show the save dialog
 
                 JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
+                // open file chooser
                 int returnValue = jfc.showOpenDialog(null);
                 LilLexi.FRAME.setEnabled(true);
-                // int returnValue = jfc.showSaveDialog(null);
 
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     String path = jfc.getSelectedFile().getAbsolutePath();
-                    System.out.println("hi");
                     BufferedImage image;
                     try {
                         image = ImageIO.read(new File(path));
                         int width = image.getWidth(null);
-                        if (width > 400) {
+
+                        // scale image to0 big
+                        if (width > 1000) {
                             BufferedImage dbi = new BufferedImage(400, 400 * image.getHeight() / image.getWidth(),
                                     image.getType());
                             Graphics2D g = dbi.createGraphics();
@@ -150,6 +156,7 @@ public class InsertMenu extends JMenu {
                             image = dbi;
                         }
                         control.addGlyph(new glyphs.graphical.Image(image, 0, 0));
+
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }

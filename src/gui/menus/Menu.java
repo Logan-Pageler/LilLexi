@@ -52,8 +52,16 @@ public class Menu extends JMenuBar {
                     int num = Integer.parseInt(fontSize.getText());
                     if (num > 100) {
                         num = 100;
+                        fontSize.setText("" + num);
+                        fontSize.setEditable(false);
+                    } else if (num < 1) {
+                        num = 0;
+                        fontSize.setText("" + num);
+                        fontSize.setEditable(false);
+                    } else {
+
+                        fontSize.setEditable(true);
                     }
-                    fontSize.setEditable(true);
                 } else {
                     fontSize.setEditable(false);
                 }
