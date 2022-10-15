@@ -99,6 +99,7 @@ public class Composition extends Glyph {
    */
   public void setGlyphs(List<Glyph> glyphs) {
     this.children = glyphs;
+    this.bounds = children.get(0).getBounds();
   }
 
   @Override
