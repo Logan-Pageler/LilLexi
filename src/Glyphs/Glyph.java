@@ -8,6 +8,11 @@ import java.util.List;
 
 import visitors.Visitor;
 
+/**
+ * A Glyph using the Composition pattern to have a recursive structure of visual elements.
+ * 
+ * @author Jordan
+ */
 public abstract class Glyph {
 
     protected Rectangle bounds;

@@ -7,6 +7,11 @@ import glyphs.Glyph;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * A Rectangle to graphically draw on the screen.
+ * 
+ * @author Jordan
+ */
 public class Rectangle extends Glyph {
   public Rectangle(int x, int y, int width, int height) {
     super(x, y, width, height);

@@ -8,6 +8,11 @@ import glyphs.Glyph;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * an Image glyph to graphically draw on the screen.
+ * 
+ * @author Jordan
+ */
 public class Image extends Glyph {
   private java.awt.Image imageObj;
 

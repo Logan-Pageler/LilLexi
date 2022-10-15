@@ -10,6 +10,8 @@ import visitors.Visitor;
  * A vertical Column glyph, whose children are added one on top of the other.
  * Its height is the sum of each of its children's heights, and its width is
  * that of its widest child.
+ * 
+ * @author Jordan
  */
 public class Column extends Glyph {
   public Column(int x, int y) {

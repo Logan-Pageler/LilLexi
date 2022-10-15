@@ -13,6 +13,8 @@ import visitors.Visitor;
  * Composition is a Glyph which aggregates a list of graphical glyphs, formats
  * them using a Compositor, and keeps analysis of them through one or more
  * Visitors
+ * 
+ * @author Jordan
  */
 public class Composition extends Glyph {
   private List<Glyph> graphicalGlyphs;
@@ -99,6 +101,7 @@ public class Composition extends Glyph {
    */
   public void setGlyphs(List<Glyph> glyphs) {
     this.children = glyphs;
+    this.bounds = children.get(0).getBounds();
   }
 
   @Override

@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import glyphs.Glyph;
 import glyphs.graphical.Character;
 import glyphs.graphical.Empty;
+import glyphs.graphical.Rectangle;
 import iterators.NullIterator;
 import visitors.Visitor;
 
@@ -50,6 +51,10 @@ public class Cursor extends MonoGlyph {
     public void accept(Visitor v) {
         if (child instanceof Character) {
             v.visitCharacter((Character) child);
+        } else if (child instanceof glyphs.graphical.Image) {
+            v.visitImage((glyphs.graphical.Image) child);
+        } else if (child instanceof Rectangle) {
+            v.visitRectangle((Rectangle) child);
         } else {
             v.visitEmpty((Empty) child);
         }

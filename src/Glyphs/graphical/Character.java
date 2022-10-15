@@ -11,6 +11,12 @@ import glyphs.Glyph;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * A class to represent characters on the document. Contains special fields Font
+ * and Color, alongside overlayColor for temporary adjustments.
+ * 
+ * @author Jordan
+ */
 public class Character extends Glyph {
 
   private char c;

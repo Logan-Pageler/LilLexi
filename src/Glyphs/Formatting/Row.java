@@ -11,6 +11,8 @@ import visitors.Visitor;
  * after another.
  * Its width is the sum of its children's widths, and its height
  * is that of its tallest child
+ * 
+ * @author Jordan
  */
 public class Row extends Glyph {
   public Row(int x, int y) {

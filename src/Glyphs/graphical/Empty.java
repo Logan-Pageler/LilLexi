@@ -7,6 +7,11 @@ import glyphs.Glyph;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * Empty glyph to use as a placeholder for Cursor
+ * 
+ * @author Logan
+ */
 public class Empty extends Glyph {
 
     public Empty(int x, int y, int width, int height) {
