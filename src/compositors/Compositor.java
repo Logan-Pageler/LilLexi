@@ -5,6 +5,8 @@ import glyphs.formatting.Composition;
 /**
  * The Compositor is used in conjunction with a Composition to arrange its
  * characters into a Glyph structure.
+ * 
+ * @author Jordan
  */
 public abstract class Compositor {
 

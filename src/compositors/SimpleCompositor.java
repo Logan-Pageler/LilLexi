@@ -11,6 +11,8 @@ import glyphs.graphical.Character;
 /**
  * A Compositor which creates a column, containing rows which do not exceed
  * maxWidth, from the Composition's list of graphicalGlyphs.
+ * 
+ * @author Jordan
  */
 public class SimpleCompositor extends Compositor {
 

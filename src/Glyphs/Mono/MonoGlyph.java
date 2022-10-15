@@ -1,10 +1,16 @@
 package glyphs.mono;
 
-import java.util.List;
 import java.awt.Rectangle;
+import java.util.List;
 
 import glyphs.Glyph;
 
+/**
+ * A glyph class that wraps around a single child, adding some extension,
+ * decoration, or functionality to its child.
+ * 
+ * @author Logan
+ */
 public abstract class MonoGlyph extends Glyph {
 
     protected Glyph child;
@@ -23,6 +29,7 @@ public abstract class MonoGlyph extends Glyph {
      * </P>
      * {@inheritDoc}
      */
+    @Override
     public Glyph getChild(int index) {
         return child.getChild(index);
     }
@@ -37,6 +44,7 @@ public abstract class MonoGlyph extends Glyph {
      * </P>
      * {@inheritDoc}
      */
+    @Override
     public List<Glyph> getChildren() {
         return child.getChildren();
     }
@@ -52,6 +60,7 @@ public abstract class MonoGlyph extends Glyph {
      * {@inheritDoc}
      * 
      */
+    @Override
     public int getChildrenCount() {
         return child.getChildrenCount();
     }
@@ -66,6 +75,7 @@ public abstract class MonoGlyph extends Glyph {
      * </p>
      * {@inheritDoc}
      */
+    @Override
     public void setChildren(List<Glyph> children) {
         child.setChildren(children);
     }
@@ -80,6 +90,7 @@ public abstract class MonoGlyph extends Glyph {
      * </p>
      * {@inheritDoc}
      */
+    @Override
     public void add(int index, Glyph glyph) {
         child.add(index, glyph);
     }
@@ -94,6 +105,7 @@ public abstract class MonoGlyph extends Glyph {
      * </P>
      * {@inheritDoc}
      */
+    @Override
     public Glyph remove(int index) {
         return child.remove(index);
     }
@@ -116,23 +128,23 @@ public abstract class MonoGlyph extends Glyph {
         this.child = child;
     }
 
-    /**
-     * 
-     */
+    @Override
     public void setBounds(Rectangle rect) {
         this.bounds = rect;
         child.setBounds(rect);
     }
 
+    @Override
     public void setPosition(int x, int y) {
         this.bounds.setLocation(x, y);
         child.setPosition(x, y);
     }
-
+    
+    @Override
     public int indexOf(Glyph g) {
         return child.indexOf(g);
     }
-
+    @Override
     public void set(int index, Glyph g) {
         child.set(index, g);
     }

@@ -6,6 +6,8 @@ package visitors;
  * methods, it accumulates information about the state of the document.
  * Here it has been used for spellcheck; other possibilities include wordcount,
  * hyphenation checking, etc.
+ * 
+ * @author Jordan
  */
 public interface Visitor {
   /**

@@ -1,9 +1,13 @@
 package gui;
 
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Graphics;
 
-import javax.swing.JSpinner.ListEditor;
-
+/**
+ * A Window to draw Documents on, attached to a particular UI
+ * 
+ * @author Logan
+ */
 public class Window extends Canvas implements Runnable {
 
     private static final long DELAY = 13;
@@ -18,11 +22,19 @@ public class Window extends Canvas implements Runnable {
         this.addMouseWheelListener(listener);
     }
 
+    /**
+     * Given a Graphics context g, draws its Document to the Graphics context
+     */
     public void paint(Graphics g) {
         super.paint(g);
         currentDoc.draw(g);
     }
 
+    /**
+     * Changes the current document on the screen
+     * 
+     * @param currentDoc the doc to change to display
+     */
     public void setCurrentDoc(Document currentDoc) {
         this.currentDoc = currentDoc;
     }
@@ -60,6 +72,11 @@ public class Window extends Canvas implements Runnable {
 
     }
 
+    /**
+     * Sets the control to interface between the Document and UI
+     * 
+     * @param lexiControl the control to use
+     */
     public void setControl(Control lexiControl) {
         listener.setController(lexiControl);
     }

@@ -7,6 +7,8 @@ import glyphs.Glyph;
 /**
  * A placeholder Iterator for Glyphs with no children.
  * Always returns false for hasNext(), returns null for next()
+ * 
+ * @author Jordan
  */
 public class NullIterator implements Iterator<Glyph>{
 

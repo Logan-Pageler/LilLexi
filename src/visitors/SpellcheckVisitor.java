@@ -21,6 +21,8 @@ import glyphs.graphical.Rectangle;
  * 
  * Checks for words in a given text file given in getWordSetFromFile, highlights
  * words in red if they do not exist in said file.
+ * 
+ * @author Jordan
  */
 public class SpellcheckVisitor implements Visitor{
 

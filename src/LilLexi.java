@@ -1,7 +1,6 @@
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 
 import gui.Control;
 import gui.Document;
@@ -9,10 +8,10 @@ import gui.Window;
 import gui.menus.Menu;
 
 /**
- * Lil Lexi Document Editor
+ * Lil Lexi Document Editor main method, initializing the UI, Control, and Window.
  * 
+ * @author Logan
  */
-
 public class LilLexi {
 	public static final JFrame FRAME = new JFrame();
 

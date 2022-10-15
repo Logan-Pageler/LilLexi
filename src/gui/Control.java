@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.Font;
 import java.awt.event.KeyEvent;
-import java.util.List;
 import java.util.Stack;
 
 import glyphs.graphical.Character;
@@ -10,6 +9,12 @@ import gui.commands.AddGlyphCommand;
 import gui.commands.Command;
 import gui.commands.RemoveGlyphCommand;
 
+/** 
+ * Control for the Document. Keeps track of listeners from the UI, sending
+ * updates to the Document model to update the requisite data.
+ * 
+ * @author Logan
+ */
 public class Control {
 
     private Document currentDoc;
@@ -42,6 +47,12 @@ public class Control {
         System.exit(0);
     }
 
+    /**
+     * Listeners for keys being typed to the document. Adds the corresponding
+     * Glyph to the Document
+     * 
+     * @param keyCode the keycode of key pressed
+     */
     public void keyTyped(int keyCode) {
         switch (keyCode) {
             case KeyEvent.VK_BACK_SPACE:
@@ -57,6 +68,12 @@ public class Control {
         }
     }
 
+    /**
+     * Listener for keys being pressed. Sends signals to move cursor left or
+     * right if arrows are pressed
+     * 
+     * @param keyCode the keycode of key pressed
+     */
     public void keyPressed(int keyCode) {
         switch (keyCode) {
             case KeyEvent.VK_LEFT:
@@ -76,18 +93,38 @@ public class Control {
 
     }
 
+    /**
+     * Sets current font of document
+     * 
+     * @param font the new font to switch to
+     */
     public void setFont(String font) {
         this.font = font;
     }
 
+    /**
+     * Changes font size of the document
+     * 
+     * @param size the size to set the font to
+     */
     public void setFontSize(int size) {
         fontSize = size;
     }
 
+    /**
+     * Scrolls the document by the amound designated by the scroll wheel
+
+     * @param wheelRotation the amount to scroll
+     */
     public void scroll(int wheelRotation) {
         currentDoc.scroll(wheelRotation);
     }
 
+    /**
+     * Executes the given Command on the Document
+     * 
+     * @param command the Command to execute
+     */
     public void execute(Command command) {
         command.execute();
         commands.push(command);
@@ -95,6 +132,9 @@ public class Control {
 
     }
 
+    /**
+     * Undoes the most resent command.
+     */
     public void undo() {
         if (!commands.empty()) {
             Command command = commands.pop();
@@ -103,6 +143,9 @@ public class Control {
         }
     }
 
+    /**
+     * Redoes the most recently undone command
+     */
     public void redo() {
         if (!reversed.empty()) {
             Command command = reversed.pop();

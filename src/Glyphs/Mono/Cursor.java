@@ -12,6 +12,11 @@ import glyphs.graphical.Empty;
 import iterators.NullIterator;
 import visitors.Visitor;
 
+/**
+ * A cursor to overlay on the currently selected character.
+ * 
+ * @author Logan
+ */
 public class Cursor extends MonoGlyph {
 
     Image cursor;
@@ -38,6 +43,7 @@ public class Cursor extends MonoGlyph {
 
     }
 
+    @Override
     public void setChild(Glyph child) {
         super.setChild(child);
         this.bounds = child.getBounds();
