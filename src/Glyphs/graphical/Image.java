@@ -9,10 +9,10 @@ import iterators.NullIterator;
 import visitors.Visitor;
 
 public class Image extends Glyph {
-  private BufferedImage imageObj;
+  private java.awt.Image imageObj;
 
-  public Image(BufferedImage image, int x, int y) {
-    super(x, y, image.getWidth(), image.getHeight());
+  public Image(java.awt.Image image, int x, int y) {
+    super(x, y, image.getWidth(null), image.getHeight(null));
     this.imageObj = image;
   }
 

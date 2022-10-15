@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Stack;
 
+import glyphs.Glyph;
 import glyphs.graphical.Character;
 import gui.commands.AddGlyphCommand;
 import gui.commands.Command;
@@ -109,6 +110,15 @@ public class Control {
             command.execute();
             commands.push(command);
         }
+    }
+
+    public void addGlyph(Glyph g) {
+        execute(new AddGlyphCommand(g,
+                currentDoc));
+    }
+
+    public void removeGlyph(Glyph g) {
+        execute(new RemoveGlyphCommand(currentDoc));
     }
 
 }
