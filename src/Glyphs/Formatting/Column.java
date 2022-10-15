@@ -36,7 +36,7 @@ public class Column extends Glyph {
   }
 
   @Override
-  public void remove(int index) {
+  public Glyph remove(int index) {
     Glyph removedChild = this.children.remove(index);
     int curY = this.getY();
     int curWidth = 0;
@@ -47,6 +47,7 @@ public class Column extends Glyph {
     }
     this.setHeight(this.getHeight() - removedChild.getHeight());
     this.setWidth(curWidth);
+    return removedChild;
   }
 
   @Override

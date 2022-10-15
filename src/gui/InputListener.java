@@ -58,7 +58,6 @@ public class InputListener implements MouseListener, KeyListener, MouseWheelList
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        System.out.println(e.getWheelRotation());
         control.scroll(e.getWheelRotation());
     }
 

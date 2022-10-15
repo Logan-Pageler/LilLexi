@@ -97,13 +97,28 @@ public class Menu extends JMenuBar {
         this.add(fontSize);
         this.add(incFontSize);
 
-        JMenu undo = new JMenu("Undo");
-        JLabel undoDesc = new JLabel("ctrl + z");
-        undo.add(undoDesc);
+        JButton undo = new JButton("Undo");
 
-        JMenu redo = new JMenu("Redo");
-        JLabel redoDesc = new JLabel("ctrl + r");
-        redo.add(redoDesc);
+        undo.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                control.undo();
+
+            }
+
+        });
+
+        JButton redo = new JButton("Redo");
+        redo.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                control.redo();
+
+            }
+
+        });
 
         this.add(undo);
         this.add(redo);

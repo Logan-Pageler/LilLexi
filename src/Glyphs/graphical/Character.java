@@ -80,7 +80,6 @@ public class Character extends Glyph {
       gc.setColor(this.color);
     }
     gc.drawString("" + c, bounds.x, bounds.y + bounds.height);
-    System.out.println(bounds);
   }
 
   /**

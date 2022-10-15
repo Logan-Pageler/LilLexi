@@ -2,14 +2,21 @@ package gui;
 
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.Stack;
 
 import glyphs.graphical.Character;
+import gui.commands.AddGlyphCommand;
+import gui.commands.Command;
+import gui.commands.RemoveGlyphCommand;
 
 public class Control {
 
     private Document currentDoc;
-    String font;
-    int fontSize, fontType;
+    private String font;
+    private int fontSize, fontType;
+    private Stack<Command> commands;
+    private Stack<Command> reversed;
 
     /**
      * LilLexiControl
@@ -22,6 +29,9 @@ public class Control {
         font = Font.SANS_SERIF;
         fontType = Font.PLAIN;
         fontSize = 20;
+
+        commands = new Stack<Command>();
+        reversed = new Stack<Command>();
 
     }
 
@@ -37,16 +47,13 @@ public class Control {
             case KeyEvent.VK_BACK_SPACE:
             case KeyEvent.VK_DELETE:
                 if (currentDoc.index != 0) {
-                    currentDoc.index--;
-                    currentDoc.removeGlyph();
-                    currentDoc.updateCursor();
+                    execute(new RemoveGlyphCommand(currentDoc));
+
                 }
                 break;
             default:
-                currentDoc.addGlyph(new Character((char) keyCode, font, fontType, fontSize));
-                currentDoc.index++;
-                currentDoc.updateCursor();
-
+                execute(new AddGlyphCommand(new Character((char) keyCode, font, fontType, fontSize),
+                        currentDoc));
         }
     }
 
@@ -79,6 +86,29 @@ public class Control {
 
     public void scroll(int wheelRotation) {
         currentDoc.scroll(wheelRotation);
+    }
+
+    public void execute(Command command) {
+        command.execute();
+        commands.push(command);
+        reversed = new Stack<Command>();
+
+    }
+
+    public void undo() {
+        if (!commands.empty()) {
+            Command command = commands.pop();
+            command.reverse();
+            reversed.push(command);
+        }
+    }
+
+    public void redo() {
+        if (!reversed.empty()) {
+            Command command = reversed.pop();
+            command.execute();
+            commands.push(command);
+        }
     }
 
 }

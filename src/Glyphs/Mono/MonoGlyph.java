@@ -94,8 +94,8 @@ public abstract class MonoGlyph extends Glyph {
      * </P>
      * {@inheritDoc}
      */
-    public void remove(int index) {
-        child.remove(index);
+    public Glyph remove(int index) {
+        return child.remove(index);
     }
 
     /**

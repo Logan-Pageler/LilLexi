@@ -52,10 +52,11 @@ public class Composition extends Glyph {
   }
 
   @Override
-  public void remove(int index) {
-    this.graphicalGlyphs.remove(index);
+  public Glyph remove(int index) {
+    Glyph removed = this.graphicalGlyphs.remove(index);
     compositor.compose();
     notifyVisitors();
+    return removed;
   }
 
   @Override
@@ -91,7 +92,8 @@ public class Composition extends Glyph {
 
   /**
    * Sets the children of this Composition
-   * NOTE: This contains no protection for formatting, and does not reactivate the compositor.
+   * NOTE: This contains no protection for formatting, and does not reactivate the
+   * compositor.
    * 
    * @param glyphs the glyphs to set this Composition's children to
    */
@@ -122,10 +124,10 @@ public class Composition extends Glyph {
    * this Composition
    */
   public void notifyVisitors() {
-    for (Visitor v: visitors) {
+    for (Visitor v : visitors) {
       v.reset();
     }
-    for (Visitor v: visitors) {
+    for (Visitor v : visitors) {
       accept(v);
     }
   }

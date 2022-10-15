@@ -45,13 +45,12 @@ public class Document {
 	}
 
 	public void addGlyph(Glyph g) {
+		removeCursor();
 
-		if (index == 0) {
-			cursor.setChild(g);
-			pointer.set(0, cursor);
-		} else {
-			pointer.add(index, g);
-		}
+		pointer.add(index, g);
+		index++;
+		updateCursor();
+
 	}
 
 	/**
@@ -61,31 +60,42 @@ public class Document {
 		return page;
 	}
 
-	public void removeGlyph() {
-		if (index == 0) {
-			if (pointer.getChildrenCount() == 1) {
-				cursor.setChild(new Empty(0, 0, 0, 20));
-				pointer.set(0, cursor);
-			}
+	public Glyph removeGlyph() {
+		removeCursor();
+
+		index--;
+		Glyph removed = pointer.remove(index);
+
+		updateCursor();
+		return removed;
+
+	}
+
+	public void removeCursor() {
+		int index = pointer.indexOf(cursor);
+		if (index == -1) {
+			return; // cursor isnt there
+		} else if (cursor.getChild() instanceof Empty) {
+			pointer.remove(index); // cursor doesnt have a child just remove
 		} else {
-			pointer.remove(index);
+			pointer.set(index, cursor.getChild()); // otherwise replace cursor
 		}
 	}
 
 	public void updateCursor() {
 		int index = pointer.indexOf(cursor);
+		if (index != -1) {
+			removeCursor();
+		}
 
-		if (index == -1) {
-			cursor.setChild(page.getChild(this.index - 1));
-			pointer.set(this.index - 1, cursor);
-		} else if (this.index == 0) {
+		if (this.index == 0) {
 			cursor.setChild(new Empty(0, 0, 0, 20));
 			pointer.add(0, cursor);
-		} else if (this.index - 1 != index) {
-			pointer.set(index, cursor.getChild());
+		} else {
 			cursor.setChild(page.getChild(this.index - 1));
 			pointer.set(this.index - 1, cursor);
 		}
+
 	}
 
 	public void draw(Graphics g) {
@@ -98,5 +108,13 @@ public class Document {
 
 	public void scroll(int wheelRotation) {
 		page.scrollTo(page.getScroll() + wheelRotation);
+	}
+
+	public void incrementIndex() {
+		index++;
+	}
+
+	public void decrementIndex() {
+		index--;
 	}
 }

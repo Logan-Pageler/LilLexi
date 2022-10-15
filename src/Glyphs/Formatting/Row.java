@@ -8,7 +8,7 @@ import visitors.Visitor;
 
 /**
  * A horizontal Row class whose children are added in a horizontal sequence one
- * after another. 
+ * after another.
  * Its width is the sum of its children's widths, and its height
  * is that of its tallest child
  */
@@ -37,7 +37,7 @@ public class Row extends Glyph {
   }
 
   @Override
-  public void remove(int index) {
+  public Glyph remove(int index) {
     Glyph removedChild = this.children.remove(index);
     int curX = this.getX();
     int curHeight = 0;
@@ -48,6 +48,7 @@ public class Row extends Glyph {
     }
     this.setWidth(this.getWidth() - removedChild.getWidth());
     this.setHeight(curHeight);
+    return removedChild;
   }
 
   @Override

@@ -87,8 +87,8 @@ public abstract class Glyph {
      * 
      * @param index index to remove child
      */
-    public void remove(int index) {
-        children.remove(index);
+    public Glyph remove(int index) {
+        return children.remove(index);
     }
 
     /**
@@ -117,8 +117,8 @@ public abstract class Glyph {
         int diffX = x - this.getX();
         int diffY = y - this.getY();
         this.bounds.setLocation(x, y);
-        for (Glyph g: children) {
-          g.setPosition(g.getX() + diffX, g.getY() + diffY);
+        for (Glyph g : children) {
+            g.setPosition(g.getX() + diffX, g.getY() + diffY);
         }
     }
 
