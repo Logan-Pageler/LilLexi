@@ -15,11 +15,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+/**
+ * Class to create top menu bar and organize all its sub menus. 
+ * 
+ * @author Logan Pageler
+ */
 public class Menu extends JMenuBar {
-
-    private JMenu insert;
-    private final int TEXT_SIZE = 15;
-    private Control control;
 
     public Menu(Control control) {
 

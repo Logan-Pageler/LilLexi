@@ -9,6 +9,11 @@ import gui.Control;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+/**
+ * Class to create font menu and organize its drop downs
+ * 
+ * @author Logan Pageler
+ */
 public class FontMenu extends JMenu {
 
     private final int TEXT_SIZE = 15;
@@ -23,6 +28,12 @@ public class FontMenu extends JMenu {
 
     }
 
+    /**
+     * adds font to menu
+     * @param font font to add
+     * @param menu menu to add to
+     * @param control control to affect
+     */
     private void addFont(String font, FontMenu menu, Control control) {
         JMenuItem sans_serif = new JMenuItem(font);
         Font ss = new Font(font, Font.PLAIN, TEXT_SIZE);

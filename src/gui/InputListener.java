@@ -2,6 +2,11 @@ package gui;
 
 import java.awt.event.*;
 
+/**
+ * Listener to take user input on a frame.
+ * 
+ * @author Logan
+ */
 public class InputListener implements MouseListener, KeyListener, MouseWheelListener {
 
     private Control control;
@@ -52,6 +57,11 @@ public class InputListener implements MouseListener, KeyListener, MouseWheelList
 
     }
 
+    /**
+     * Sets the control to interface between the Document and UI
+     * 
+     * @param lexiControl the control to use
+     */
     public void setController(Control lexiControl) {
         this.control = lexiControl;
     }

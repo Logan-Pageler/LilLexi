@@ -155,11 +155,19 @@ public class Control {
         }
     }
 
+    /**
+     * removes glyph to current document and saves command
+     * @param g glyph to remove
+     */
     public void addGlyph(Glyph g) {
         execute(new AddGlyphCommand(g,
                 currentDoc));
     }
 
+    /**
+     * adds glyph to current document and saves command
+     * @param g glyph to add
+     */
     public void removeGlyph(Glyph g) {
         execute(new RemoveGlyphCommand(currentDoc));
     }
